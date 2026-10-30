@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Расписание{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="page-header">
+    <h1>Расписание на неделю</h1>
+</header>
+
+<main class="container">
+    {% block content %}{% endblock %}
+</main>
+
+</body>
+</html>

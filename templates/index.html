@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Расписание на день{% endblock %}
+
+{% block content %}
+
+<div class="days">
+    {% for code, label in days %}
+        <a href="{{ url_for('index', day=code) }}"
+           class="day-btn {% if current_day_code == code %}active{% endif %}">
+            {{ label }}
+        </a>
+    {% endfor %}
+</div>
+
+<section class="schedule-box">
+    <h2>{{ day_name }}</h2>
+
+    {% if lessons %}
+        <ul class="lessons">
+            {% for lesson in lessons %}
+                <li class="lesson">
+                    <div class="time">{{ lesson.time }}</div>
+                    <div class="info">
+                        <span class="subject">{{ lesson.subject }}</span>
+                        <span class="room">ауд. {{ lesson.room }}</span>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="empty">На этот день занятий нет</p>
+    {% endif %}
+</section>
+
+{% endblock %}
